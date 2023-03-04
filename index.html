@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="/assets/style.css" rel="stylesheet" type="text/css">
+    <link href="./assets/style.css" rel="stylesheet" type="text/css">
     <title>What's the Weather?</title>
 </head>
 <body>
@@ -26,15 +26,17 @@
         <div id="weatherContainer" class="basis-2/3">
             <div id="currentCityWeather">
                 <h2 id="currentCity"></h2><br>
-                <p id="temperature">Temperature:</p><br>
-                <p id="wind">Wind:</p><br>
-                <p id="Humidity">Humidity:</p>
+                <img id="icon">
+                <p id="description"></p>
+                <p id="temp"></p><br>
+                <p id="wind"></p><br>
+                <p id="humidity"></p>
             </div>
-            <div>
+            <div id="fiveDay">
                 <h3>5-Day Forecast:</h3>
             </div>
         </div>
     </main>
-<script src="/assets/script.js"></script>
+<script src="./assets/script.js"></script>
 </body>
 </html>
