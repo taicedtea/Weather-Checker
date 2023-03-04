@@ -1,0 +1,37 @@
+#container {
+    margin-top: 2em;
+}
+
+#cityInput {
+    width: 50%;
+    padding: 5px;
+    border-style: solid;
+    border-color: #2F6690;
+    border-width: 2px;
+    border-radius: 2px;
+}
+
+#searchBtn {
+    background: #7EC7F1;
+    border-radius: 2px;
+    padding: 5px 10px;
+    color: white;
+}
+
+#weatherContainer {
+    background: #7EC7F1;
+    padding: 1em;
+    height: auto;
+    border-radius: 10px;
+}
+
+#currentCityWeather {
+    background: #2F6690;
+    padding: 1em;
+    border-radius: 10px;
+    color: white;
+}
+
+#currentCity {
+    font-size: 2em;
+}

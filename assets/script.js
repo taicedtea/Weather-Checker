@@ -19,14 +19,11 @@ function weather() {
     return response.json();
   })
   .then((data) => {
-    console.log(data.city.name);
-    console.log(data.list[0].weather)
     //data for current date
     const { name } = data.city;
     const { icon, description } = data.list[0].weather[0];
     const { speed } = data.list[0].wind;
     const { temp, humidity } = data.list[0].main;
-    let dailyWeatherContainer = document.querySelector('#dailyWeatherContainer');
     //populates HTML for current day
     document.querySelector('#currentCity').innerHTML = name;
     document.querySelector('#icon').src = src = "https://openweathermap.org/img/wn/" + icon + ".png";
@@ -34,13 +31,13 @@ function weather() {
     document.querySelector('#temp').innerHTML = `Temperature: ${temp} &deg;F`;
     document.querySelector('#wind').innerHTML = `Wind: ${speed} mp/h`;
     document.querySelector('#humidity').innerHTML = `Humidity: ${humidity}%`;
-    //data for 5 days after current date
+    //five day forecast
+    let dailyWeatherContainer = document.querySelector('#dailyWeatherContainer');
     var dailyHTML = '';
     for (let i = 1; i < data.list.length; i++) {
       let { icon, description } = data.list[i].weather[0];
       let { speed } = data.list[i].wind;
       let { temp, humidity } = data.list[i].main;
-      console.log(temp);
       dailyHTML += `<div class="fiveDayCard"><img src="https://openweathermap.org/img/wn/${icon}.png">
       <p>Temperature: ${temp} &deg;F</p>
       <p>${description}</p><br>
@@ -49,10 +46,16 @@ function weather() {
       // let futureDates = today.add(1, 'day').format(MM/DD/YYYY);
 
     }
+    //adds generated HTML to correct div
     dailyWeatherContainer.innerHTML = dailyHTML;
   })
 }
 
+weather();
 searchBtn.addEventListener('click', weather);
-searchBtn.addEventListener('click', fiveDay);
+// city.addEventListener('keyup', function (event) {
+//   if (event.code === 'Enter') {
+//      console.log("Enter key pressed!!!!!");
+//   }
+// });
 

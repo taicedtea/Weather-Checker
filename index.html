@@ -19,10 +19,10 @@
         <h1 class="text-2xl text-white" id="header">Weather Dashboard</h1>
     </nav>
     <main id="container" class="container flex flex-row">
-        <aside id="search" class="basis-1/4 flex flex-col">
-            <h2>Search for a City:</h2>
+        <aside id="search" class="basis-1/4 flex flex-col pl-4">
+            <h2 class="mb-4">Search for a City:</h2>
             <div>
-                <input type="text" placeholder="New York City" id="cityInput">
+                <input type="text" placeholder="New York City" id="cityInput" class="border-green-500">
                 <button id="searchBtn">Search</button>
             </div>
             <ul id="searchHistory">
@@ -32,13 +32,17 @@
             </ul>
         </aside>
         <div id="weatherContainer" class="basis-2/3">
-            <div id="currentCityWeather">
-                <h2 id="currentCity"></h2><br>
-                <img id="icon">
-                <p id="description"></p>
-                <p id="temp"></p><br>
-                <p id="wind"></p><br>
-                <p id="humidity"></p>
+            <div id="currentCityWeather" class="flex flex-row">
+                <div>
+                    <h2 id="currentCity"></h2><br>
+                    <img id="icon">
+                    <p id="description"></p>
+                </div>
+                <div>                
+                    <p id="temp"></p><br>
+                    <p id="wind"></p><br>
+                    <p id="humidity"></p>
+                </div>
             </div>
             <div id="fiveDay">
                 <h3>5-Day Forecast:</h3>
