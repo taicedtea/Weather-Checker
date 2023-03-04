@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="./assets/style.css" rel="stylesheet" type="text/css">
+    <!-- Link the DayJS library -->
+    <script
+    src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+    crossorigin="anonymous"
+    ></script>
     <title>What's the Weather?</title>
 </head>
 <body>
@@ -13,10 +19,12 @@
         <h1 class="text-2xl text-white" id="header">Weather Dashboard</h1>
     </nav>
     <main id="container" class="container flex flex-row">
-        <aside id="search" class="basis-1/3 flex flex-col">
+        <aside id="search" class="basis-1/4 flex flex-col">
             <h2>Search for a City:</h2>
-            <input type="text" placeholder="New York City" id="cityInput">
-            <button id="searchBtn">Search</button>
+            <div>
+                <input type="text" placeholder="New York City" id="cityInput">
+                <button id="searchBtn">Search</button>
+            </div>
             <ul id="searchHistory">
                 <li>Atlanta</li>
                 <li>Seattle</li>
@@ -34,6 +42,9 @@
             </div>
             <div id="fiveDay">
                 <h3>5-Day Forecast:</h3>
+                <div>
+                    <div id="dailyWeatherContainer" class="flex flex-row"></div>
+                </div>
             </div>
         </div>
     </main>
