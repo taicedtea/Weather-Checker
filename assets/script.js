@@ -38,7 +38,7 @@ function weather() {
       let { icon, description } = data.list[i].weather[0];
       let { speed } = data.list[i].wind;
       let { temp, humidity } = data.list[i].main;
-      dailyHTML += `<div class="fiveDayCard"><img src="https://openweathermap.org/img/wn/${icon}.png">
+      dailyHTML += `<div class="fiveDayCard singleCard"><img src="https://openweathermap.org/img/wn/${icon}.png">
       <p>Temperature: ${temp} &deg;F</p>
       <p>${description}</p><br>
       <p>Wind Speed: ${speed}</p><br>
@@ -49,9 +49,11 @@ function weather() {
     //adds generated HTML to correct div
     dailyWeatherContainer.innerHTML = dailyHTML;
   })
+  //adds user input into search history
+  let newHistory = `<li>${city.value}</li>`;
+  document.querySelector('#searchHistory').innerHTML += newHistory;
 }
 
-weather();
 searchBtn.addEventListener('click', weather);
 // city.addEventListener('keyup', function (event) {
 //   if (event.code === 'Enter') {

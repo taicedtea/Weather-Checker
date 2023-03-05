@@ -20,34 +20,31 @@
     </nav>
     <main id="container" class="container flex flex-row">
         <aside id="search" class="basis-1/4 flex flex-col pl-4">
-            <h2 class="mb-4">Search for a City:</h2>
+            <h2 class="mb-4 ">Search for a City:</h2>
             <div>
                 <input type="text" placeholder="New York City" id="cityInput" class="border-green-500">
                 <button id="searchBtn">Search</button>
             </div>
             <ul id="searchHistory">
-                <li>Atlanta</li>
-                <li>Seattle</li>
-                <li>San Fransisco</li>
             </ul>
         </aside>
         <div id="weatherContainer" class="basis-2/3">
             <div id="currentCityWeather" class="flex flex-row">
-                <div>
+                <div class="align-center">
                     <h2 id="currentCity"></h2><br>
                     <img id="icon">
                     <p id="description"></p>
                 </div>
-                <div>                
+                <div class="pl-10">                
                     <p id="temp"></p><br>
                     <p id="wind"></p><br>
                     <p id="humidity"></p>
                 </div>
             </div>
-            <div id="fiveDay">
-                <h3>5-Day Forecast:</h3>
+            <div id="fiveDay" class="mt-5">
+                <h3 class="mb-5 text-white text-xl pl-2">5-Day Forecast:</h3>
                 <div>
-                    <div id="dailyWeatherContainer" class="flex flex-row"></div>
+                    <div id="dailyWeatherContainer" class="flex flex-row justify-evenly"></div>
                 </div>
             </div>
         </div>

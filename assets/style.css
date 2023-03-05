@@ -35,3 +35,10 @@
 #currentCity {
     font-size: 2em;
 }
+
+.singleCard {
+    background: #2F6690;
+    padding: 1em;
+    border-radius: 10px;
+    color: white;
+}
