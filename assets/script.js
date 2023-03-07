@@ -2,10 +2,6 @@ var today = dayjs();
 let city = document.querySelector('#cityInput');
 let searchBtn = document.querySelector('#searchBtn');
 
-function test() {
-  console.log(today.format('MM/DD/YYYY'));
-}
-
 const apiKey = "2c29190c1619626977d7f8a02bf6b35e";
 function weather() {
   requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city.value}&units=imperial&appid=${apiKey}&cnt=6
@@ -50,7 +46,7 @@ function weather() {
     dailyWeatherContainer.innerHTML = dailyHTML;
   })
   //adds user input into search history
-  let newHistory = `<li class="historyValue">${city.value}</li>`;
+  let newHistory = `<li class="historyValue mt-4 bg-green ">${city.value}</li>`;
   document.querySelector('#searchHistory').innerHTML += newHistory;
 }
 

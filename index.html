@@ -22,20 +22,20 @@
         <aside id="search" class="basis-1/4 flex flex-col pl-4">
             <h2 class="mb-4 ">Search for a City:</h2>
             <div>
-                <input type="text" placeholder="New York City" id="cityInput" class="border-green-500">
+                <input type="text" placeholder="New York City" onClick="this.select();" id="cityInput" class="border-green-500">
                 <button id="searchBtn">Search</button>
             </div>
             <ul id="searchHistory">
             </ul>
         </aside>
-        <div id="weatherContainer" class="basis-2/3">
+        <div id="weatherContainer" class="basis-3/4">
             <div id="currentCityWeather" class="flex flex-row">
                 <div class="align-center">
                     <h2 id="currentCity"></h2><br>
                     <img id="icon">
                     <p id="description"></p>
                 </div>
-                <div class="pl-10">                
+                <div class="pl-10 pt-4">                
                     <p id="temp"></p><br>
                     <p id="wind"></p><br>
                     <p id="humidity"></p>
