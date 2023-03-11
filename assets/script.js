@@ -36,6 +36,7 @@ function weather() {
       let { speed } = data.list[i].wind;
       let { temp, humidity } = data.list[i].main;
       dailyHTML += `<div class="fiveDayCard singleCard ml-2 mr-2"><img src="https://openweathermap.org/img/wn/${icon}.png">
+      <p>${today.add(i, 'day').format('MM/DD/YYYY')}<p><br>
       <p>Temperature: ${temp} &deg;F</p>
       <p>${description}</p><br>
       <p>Wind Speed: ${speed}</p><br>
