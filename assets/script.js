@@ -22,6 +22,7 @@ function weather() {
     const { temp, humidity } = data.list[0].main;
     //populates HTML for current day
     document.querySelector('#currentCity').innerHTML = name;
+    document.querySelector('#currentDate').innerHTML = today.format('MM/DD/YYYY');
     document.querySelector('#icon').src = src = "https://openweathermap.org/img/wn/" + icon + ".png";
     document.querySelector('#description').innerHTML = description;
     document.querySelector('#temp').innerHTML = `Temperature: ${temp} &deg;F`;
