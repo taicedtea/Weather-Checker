@@ -20,6 +20,7 @@ function weather() {
     const { icon, description } = data.list[0].weather[0];
     const { speed } = data.list[0].wind;
     const { temp, humidity } = data.list[0].main;
+    // localStorage.setItem("location", name);
     //populates HTML for current day
     document.querySelector('#currentCity').innerHTML = name;
     document.querySelector('#currentDate').innerHTML = today.format('MM/DD/YYYY');
@@ -50,6 +51,12 @@ function weather() {
   //adds user input into search history
   let newHistory = `<li class="historyValue mt-4 bg-green ">${city.value}</li>`;
   document.querySelector('#searchHistory').innerHTML += newHistory;
+
+  document.querySelectorAll('.historyValue').forEach(item => {
+    item.addEventListener('click', () => {
+      console.log(item.innerHTML);
+    })
+  })
 }
 
 searchBtn.addEventListener('click', weather);
