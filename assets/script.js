@@ -5,10 +5,38 @@ let searchBtn = document.querySelector('#searchBtn');
 const apiKey = "2c29190c1619626977d7f8a02bf6b35e";
 
 // creates empty array for city history
-let cityHistory = [];
+let cityHistory = localStorage.getItem('cityHistory');
+cityHistory = cityHistory ? cityHistory.split(',') : [];
+
+//function for weather history
+// function addWeatherHistory() {
+//   if (!cityHistory.includes(city.value)) {
+//     cityHistory.push(city.value);
+//     localStorage.setItem('cityHistory', cityHistory.toString());
+//     // let newHistory = `<li class="historyValue mt-4 bg-green ">${cityHistory[i]}</li>`; 
+//     // document.querySelector('#searchHistory').innerHTML += newHistory;
+//     //localStorage.setItem("cityHistory", JSON.stringify(cityHistory)); 
+//   }
+// }
+
+function weatherHistory() {
+  for (let i = 0; i < cityHistory.length; i++) {
+    //adds history to html
+    let newHistory = `<li class="historyValue mt-4 bg-green ">${cityHistory[i]}</li>`; 
+    document.querySelector('#searchHistory').innerHTML += newHistory;
+  }
+}
+//addWeatherHistory();
 
 //main weather function
 function weather() {
+  if (!cityHistory.includes(city.value)) {
+    cityHistory.push(city.value);
+    localStorage.setItem('cityHistory', cityHistory.toString());
+    let newHistory = `<li class="historyValue mt-4 bg-green ">${city.value}</li>`; 
+    document.querySelector('#searchHistory').innerHTML += newHistory;
+  }
+  //cnt=6 is used to get current day data and the next 5 days data
   requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city.value}&units=imperial&appid=${apiKey}&cnt=6
   `
   fetch(requestUrl)
@@ -25,7 +53,6 @@ function weather() {
     const { icon, description } = data.list[0].weather[0];
     const { speed } = data.list[0].wind;
     const { temp, humidity } = data.list[0].main;
-    // localStorage.setItem("location", name); --------!!!!!
     //populates HTML for current day
     document.querySelector('#currentCity').innerHTML = name;
     document.querySelector('#currentDate').innerHTML = today.format('MM/DD/YYYY');
@@ -51,23 +78,19 @@ function weather() {
     //adds generated HTML to correct div
     dailyWeatherContainer.innerHTML = dailyHTML;
   })
-  //adds user input into cityHistory array
-  if (!cityHistory.includes(city.value)) {
-    cityHistory.push(city.value);
-    //adds HTML for user input
-    let newHistory = `<li class="historyValue mt-4 bg-green ">${cityHistory[cityHistory.length-1]}</li>`; 
-    document.querySelector('#searchHistory').innerHTML += newHistory;
-    console.log(cityHistory);
-  }
+  getHistoryValue();
+}
 
-  //repeats weather function with clicked on history value
+//repeats weather function with clicked on history value
+function getHistoryValue() {
   document.querySelectorAll('.historyValue').forEach(item => {
     item.addEventListener('click', () => {
       city.value = item.innerHTML;
       weather();
     })
-  }) 
+  })
 }
+
 searchBtn.addEventListener('click', weather);
 city.addEventListener('keyup', function (event) {
   if (event.code === 'Enter') {
@@ -75,3 +98,5 @@ city.addEventListener('keyup', function (event) {
   }
 });
 
+weatherHistory();
+getHistoryValue();
