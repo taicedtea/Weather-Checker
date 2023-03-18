@@ -4,29 +4,17 @@ let searchBtn = document.querySelector('#searchBtn');
 
 const apiKey = "2c29190c1619626977d7f8a02bf6b35e";
 
-// creates empty array for city history
+//creates empty array for city history
 let cityHistory = localStorage.getItem('cityHistory');
 cityHistory = cityHistory ? cityHistory.split(',') : [];
 
-//function for weather history
-// function addWeatherHistory() {
-//   if (!cityHistory.includes(city.value)) {
-//     cityHistory.push(city.value);
-//     localStorage.setItem('cityHistory', cityHistory.toString());
-//     // let newHistory = `<li class="historyValue mt-4 bg-green ">${cityHistory[i]}</li>`; 
-//     // document.querySelector('#searchHistory').innerHTML += newHistory;
-//     //localStorage.setItem("cityHistory", JSON.stringify(cityHistory)); 
-//   }
-// }
-
+//adds history to html
 function weatherHistory() {
   for (let i = 0; i < cityHistory.length; i++) {
-    //adds history to html
     let newHistory = `<li class="historyValue mt-4 bg-green ">${cityHistory[i]}</li>`; 
     document.querySelector('#searchHistory').innerHTML += newHistory;
   }
 }
-//addWeatherHistory();
 
 //main weather function
 function weather() {
@@ -78,6 +66,7 @@ function weather() {
     //adds generated HTML to correct div
     dailyWeatherContainer.innerHTML = dailyHTML;
   })
+  //necessary to allow users to continue to be able to click on history
   getHistoryValue();
 }
 
@@ -91,7 +80,9 @@ function getHistoryValue() {
   })
 }
 
+//adds functionality to search buttton
 searchBtn.addEventListener('click', weather);
+//calls weather function on 'enter' key press while in textbox
 city.addEventListener('keyup', function (event) {
   if (event.code === 'Enter') {
      weather();
