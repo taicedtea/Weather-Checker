@@ -3,6 +3,7 @@ let city = document.querySelector('#cityInput');
 let searchBtn = document.querySelector('#searchBtn');
 
 const apiKey = "2c29190c1619626977d7f8a02bf6b35e";
+//main weather function
 function weather() {
   requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city.value}&units=imperial&appid=${apiKey}&cnt=6
   `
@@ -16,7 +17,7 @@ function weather() {
   })
   .then((data) => {
     //data for current date
-    const { name } = data.city;
+    let { name } = data.city;
     const { icon, description } = data.list[0].weather[0];
     const { speed } = data.list[0].wind;
     const { temp, humidity } = data.list[0].main;
@@ -42,8 +43,6 @@ function weather() {
       <p>${description}</p><br>
       <p>Wind Speed: ${speed}</p><br>
       <p>Humidity: ${humidity}%</p></div>`;
-      // let futureDates = today.add(1, 'day').format(MM/DD/YYYY);
-
     }
     //adds generated HTML to correct div
     dailyWeatherContainer.innerHTML = dailyHTML;
@@ -52,13 +51,14 @@ function weather() {
   let newHistory = `<li class="historyValue mt-4 bg-green ">${city.value}</li>`;
   document.querySelector('#searchHistory').innerHTML += newHistory;
 
+  //repeats weather function with clicked on history value
   document.querySelectorAll('.historyValue').forEach(item => {
     item.addEventListener('click', () => {
-      console.log(item.innerHTML);
+      city.value = item.innerHTML;
+      weather();
     })
   })
 }
-
 searchBtn.addEventListener('click', weather);
 city.addEventListener('keyup', function (event) {
   if (event.code === 'Enter') {
