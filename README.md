@@ -11,3 +11,6 @@ This app utilizes localStorage to store user's past history in their browser, us
 - Handle non-existent city errors more seamlessly
 - add either scrolling to history list or limit number of cities inhistory
 - Responsive mobile design
+
+## Live Website
+[Link Here](https://taicedtea.github.io/Weather-Checker/): [https://taicedtea.github.io/Weather-Checker/](https://taicedtea.github.io/Weather-Checker/)
